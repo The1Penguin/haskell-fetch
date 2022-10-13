@@ -3,5 +3,54 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: monad-extras-0.6.0@sha256:a97a5fcedaa9336b88be4f88f1e91d86082ce76b790f936701c1f933aedd7b8c,625
+    pantry-tree:
+      sha256: 6b752224ea4bd60e6f34fd9dfa17712ff15986054f320c7bc298c35d5bec75d9
+      size: 218
+  original:
+    hackage: monad-extras-0.6.0@sha256:a97a5fcedaa9336b88be4f88f1e91d86082ce76b790f936701c1f933aedd7b8c,625
+- completed:
+    hackage: mmorph-1.2.0@sha256:df9b213ec18f811cb3137b478d148f3f1680ee43f841cb775835fa282fdb0295,1083
+    pantry-tree:
+      sha256: 3dff3f49e5604657a2874faa3a0a2f38990a02b48d6c2b6ae56c2f22b4184a04
+      size: 346
+  original:
+    hackage: mmorph-1.2.0@sha256:df9b213ec18f811cb3137b478d148f3f1680ee43f841cb775835fa282fdb0295,1083
+- completed:
+    hackage: monad-control-1.0.3.1@sha256:2d657279839e1a760c86a69f00f0c36473ef6972d413ec0f83a40249c70e098e,2365
+    pantry-tree:
+      sha256: f6b2e10b7ad03cbc2bd1df28543c9d514d54bd39833e318b48e5f0998d876df5
+      size: 292
+  original:
+    hackage: monad-control-1.0.3.1@sha256:2d657279839e1a760c86a69f00f0c36473ef6972d413ec0f83a40249c70e098e,2365
+- completed:
+    hackage: transformers-base-0.4.6@sha256:6f18f320e371c8954c4b6b211e2fdd5d15a6d6310bd605b9d640f47ede408961,1643
+    pantry-tree:
+      sha256: 6c2d24a9678865e2a5f4b6286cb17228673a6987fb546bf07b89ffbd19716ad2
+      size: 275
+  original:
+    hackage: transformers-base-0.4.6@sha256:6f18f320e371c8954c4b6b211e2fdd5d15a6d6310bd605b9d640f47ede408961,1643
+- completed:
+    hackage: base-orphans-0.8.7@sha256:58d5514b688ec037f53b9d60097b9d87f6b3847da68f65124987d67222c3a334,3175
+    pantry-tree:
+      sha256: b2433cf19ebc5696130ecf39a3ed756cdb00fd508423643b0cdd6f125c9803da
+      size: 1272
+  original:
+    hackage: base-orphans-0.8.7@sha256:58d5514b688ec037f53b9d60097b9d87f6b3847da68f65124987d67222c3a334,3175
+- completed:
+    hackage: transformers-compat-0.7.2@sha256:044fb9955f63ee138fcebedfdcbe54afe741f2d5892a2d0bdf3a8052bd342643,5601
+    pantry-tree:
+      sha256: f49610c6a2faf82111e5d4222576f4afbcfa904bf56665232c5aa077dfc7578f
+      size: 1724
+  original:
+    hackage: transformers-compat-0.7.2@sha256:044fb9955f63ee138fcebedfdcbe54afe741f2d5892a2d0bdf3a8052bd342643,5601
+- completed:
+    hackage: hostname-1.0@sha256:8203b6ecd14ca1ef12f73a471b0a6a4be3ad4568d8b84f2bc4bc9e0abb8c4153,813
+    pantry-tree:
+      sha256: 962f3607627035d8da35d0073170e75e736adcc6919a3d96669cbe28bf19468b
+      size: 212
+  original:
+    hackage: hostname-1.0@sha256:8203b6ecd14ca1ef12f73a471b0a6a4be3ad4568d8b84f2bc4bc9e0abb8c4153,813
 snapshots: []

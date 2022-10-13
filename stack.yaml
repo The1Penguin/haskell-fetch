@@ -28,7 +28,8 @@ resolver: ghc-9.4.2
 #   subdirs:
 #   - auto-update
 #   - wai
-packages: []
+packages:
+  - .
 # Dependency packages to be pulled from upstream that are not in the resolver.
 # These entries can reference officially published versions as well as
 # forks / in-progress versions pinned to a git hash. For example:
@@ -38,7 +39,14 @@ packages: []
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
-# extra-deps: []
+extra-deps:
+  - monad-extras-0.6.0@sha256:a97a5fcedaa9336b88be4f88f1e91d86082ce76b790f936701c1f933aedd7b8c,625
+  - mmorph-1.2.0@sha256:df9b213ec18f811cb3137b478d148f3f1680ee43f841cb775835fa282fdb0295,1083
+  - monad-control-1.0.3.1@sha256:2d657279839e1a760c86a69f00f0c36473ef6972d413ec0f83a40249c70e098e,2365
+  - transformers-base-0.4.6@sha256:6f18f320e371c8954c4b6b211e2fdd5d15a6d6310bd605b9d640f47ede408961,1643
+  - base-orphans-0.8.7@sha256:58d5514b688ec037f53b9d60097b9d87f6b3847da68f65124987d67222c3a334,3175
+  - transformers-compat-0.7.2@sha256:044fb9955f63ee138fcebedfdcbe54afe741f2d5892a2d0bdf3a8052bd342643,5601
+  - hostname-1.0@sha256:8203b6ecd14ca1ef12f73a471b0a6a4be3ad4568d8b84f2bc4bc9e0abb8c4153,813
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

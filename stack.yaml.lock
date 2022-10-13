@@ -53,4 +53,18 @@ packages:
       size: 212
   original:
     hackage: hostname-1.0@sha256:8203b6ecd14ca1ef12f73a471b0a6a4be3ad4568d8b84f2bc4bc9e0abb8c4153,813
+- completed:
+    hackage: regex-pcre-0.95.0.0@sha256:323472b4a721694d3c0cc347affe7b69eec3ae2d9a782417dee2ff23aff1d81d,2461
+    pantry-tree:
+      sha256: e40638874bbff2b0d42f95358c755827cf0483bc4cdfabb23c8580cbca29e37e
+      size: 634
+  original:
+    hackage: regex-pcre-0.95.0.0@sha256:323472b4a721694d3c0cc347affe7b69eec3ae2d9a782417dee2ff23aff1d81d,2461
+- completed:
+    hackage: regex-base-0.94.0.2@sha256:4ff4425c710cddf440dfbac6cd52310bb6b23e17902390ff71c9fc7eaafc4fcc,2643
+    pantry-tree:
+      sha256: 6415af6c7af19d83283a19407cbf9ece0dc9cf9be9a0d9560d0456247cfa0d00
+      size: 531
+  original:
+    hackage: regex-base-0.94.0.2@sha256:4ff4425c710cddf440dfbac6cd52310bb6b23e17902390ff71c9fc7eaafc4fcc,2643
 snapshots: []

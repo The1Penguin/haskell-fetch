@@ -73,6 +73,7 @@ executable haskell-fetch
                     , process
                     , monad-extras
                     , hostname
+                    , regex-pcre
 
     -- Directories containing source files.
     hs-source-dirs:   app

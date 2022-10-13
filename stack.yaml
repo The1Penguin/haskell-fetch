@@ -47,6 +47,8 @@ extra-deps:
   - base-orphans-0.8.7@sha256:58d5514b688ec037f53b9d60097b9d87f6b3847da68f65124987d67222c3a334,3175
   - transformers-compat-0.7.2@sha256:044fb9955f63ee138fcebedfdcbe54afe741f2d5892a2d0bdf3a8052bd342643,5601
   - hostname-1.0@sha256:8203b6ecd14ca1ef12f73a471b0a6a4be3ad4568d8b84f2bc4bc9e0abb8c4153,813
+  - regex-pcre-0.95.0.0@sha256:323472b4a721694d3c0cc347affe7b69eec3ae2d9a782417dee2ff23aff1d81d,2461
+  - regex-base-0.94.0.2@sha256:4ff4425c710cddf440dfbac6cd52310bb6b23e17902390ff71c9fc7eaafc4fcc,2643
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

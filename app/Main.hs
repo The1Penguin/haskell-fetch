@@ -14,8 +14,9 @@ hostname :: IO String
 hostname = getHostName
 
 distro :: IO String
-distro = liftM (flip (=~) pattern . (!! 0) . filter (isPrefixOf "NAME=") . lines) $ readFile "/etc/os-release"
-  where pattern = "(?!\")[A-z\\d\\s\\/]+(?=\")"
+distro = liftM (\x -> x =~ distroPattern :: String) $ liftM (\x -> x =~ linePattern :: String) $ readFile "/etc/os-release"
+  where distroPattern = "(?!\")[A-z\\d\\s\\/]+(?=\")"
+        linePattern = "^NAME=.*"
 
 main :: IO ()
 main = do

@@ -15,10 +15,9 @@ hostname = getHostName
 
 distro :: IO String
 distro = let
-    distroPattern = "(?!\")[A-z\\d\\s\\/]+(?=\")" :: String
-    linePattern = "^NAME=.*" :: String
+    pattern = "[A-z\\d\\s\\/]+(?=\\\")" :: String
     in
-      liftM (flip (=~) distroPattern :: (String -> String)) $ liftM (flip (=~) linePattern :: (String -> String)) $ readFile "/etc/os-release"
+      flip (=~~) pattern =<< readFile "/etc/os-release"
 
 main :: IO ()
 main = do

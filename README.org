@@ -1,0 +1,10 @@
+#+title: Haskell Fetch
+
+* Features wanted
+- username@host
+- cpu
+- gpu
+- os
+- arch
+- kernel
+- uptime

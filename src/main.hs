@@ -6,4 +6,4 @@ user :: IO String
 user = getEnv "USER"
 
 main :: IO ()
-main = putStrLn "Dab"
+main = putStrLn =<< user

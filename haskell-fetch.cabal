@@ -74,6 +74,7 @@ executable haskell-fetch
                     , monad-extras
                     , hostname
                     , regex-pcre
+                    , tuple
 
     -- Directories containing source files.
     hs-source-dirs:   app

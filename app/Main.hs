@@ -4,8 +4,10 @@ import System.Environment
 import Network.HostName
 import Control.Monad
 import System.Info
+import System.Process
 import System.IO
 import Data.List
+import Data.Tuple.Select
 import Text.Regex.PCRE
 
 user :: IO String
@@ -24,13 +26,13 @@ architechture :: IO String
 architechture = return arch
 
 kernel :: IO String
-kernel = undefined
+kernel = liftM (head . drop 2 . words . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
 
 display :: String -> String -> String -> String -> String -> String
 display x y z v b = x ++ "@" ++ y
   ++ "\nDistro: " ++ z
   ++ "\nArchitechture: " ++ v
-  ++ "\nKernel" ++ b
+  ++ "\nKernel: " ++ b
 
 main :: IO ()
 main = do

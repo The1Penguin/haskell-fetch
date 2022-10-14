@@ -67,4 +67,18 @@ packages:
       size: 531
   original:
     hackage: regex-base-0.94.0.2@sha256:4ff4425c710cddf440dfbac6cd52310bb6b23e17902390ff71c9fc7eaafc4fcc,2643
+- completed:
+    hackage: tuple-0.3.0.2@sha256:5dd26b90befac62a4acb887b70bc81c87e576f2f97b7701ca7b1544dc468725d,775
+    pantry-tree:
+      sha256: 49a77816ff721b23fc7dcdb94d32688ee57e8045ddc044bda55cbdd3bc1ae26a
+      size: 579
+  original:
+    hackage: tuple-0.3.0.2@sha256:5dd26b90befac62a4acb887b70bc81c87e576f2f97b7701ca7b1544dc468725d,775
+- completed:
+    hackage: OneTuple-0.3.1@sha256:fc32cb744477befa450a538ea4975cc523f0a2f1585cb5a36e9936a3d18e9a3c,2276
+    pantry-tree:
+      sha256: a45de98364d5a128ffcc07a05f2f3dd0befee311c7e106bc86dc87548288bc6b
+      size: 506
+  original:
+    hackage: OneTuple-0.3.1@sha256:fc32cb744477befa450a538ea4975cc523f0a2f1585cb5a36e9936a3d18e9a3c,2276
 snapshots: []

@@ -28,19 +28,23 @@ architechture = return arch
 kernel :: IO String
 kernel = liftM (head . drop 2 . words . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
 
+uptime :: IO String
+uptime = liftM (drop 3 . sel2) $ readProcessWithExitCode "uptime" ["-p"] ""
+
 cpu :: IO String
 cpu = let
   pattern = "(?<=\\s)[A-z\\s\\d]+(?=\\nstepping)" :: String
   in
     flip (=~~) pattern =<< readFile "/proc/cpuinfo"
 
-display :: String -> String -> String -> String -> String -> String -> String
-display x y z v b n = concat [x, "@", y
+
+display :: String -> String -> String -> String -> String -> String -> String -> String
+display x y z v b n m = concat [x, "@", y
                            ,"\nDistro: ", z
                            ,"\nArchitechture: ", v
                            ,"\nKernel: ", b
-                           , "\nCPU: ", n]
+                           , "\nUptime: ", n
+                           , "\nCPU: ", m]
 
 main :: IO ()
-main = do
-  putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` cpu
+main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` cpu

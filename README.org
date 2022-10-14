@@ -5,6 +5,6 @@
 - [X] os
 - [X] arch
 - [-] kernel
-- [ ] uptime
+- [-] uptime
 - [X] cpu
 - [ ] gpu

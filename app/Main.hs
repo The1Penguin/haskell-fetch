@@ -1,14 +1,12 @@
 module Main where
 
-import System.Environment
-import Network.HostName
-import Control.Monad
-import System.Info
-import System.Process
-import System.IO
-import Data.List
-import Data.Tuple.Select
-import Text.Regex.PCRE
+import System.Environment ( getEnv )
+import Network.HostName ( getHostName )
+import Control.Monad ( liftM, ap )
+import System.Info ( arch )
+import System.Process ( readProcessWithExitCode )
+import Data.Tuple.Select ( Sel2(sel2) )
+import Text.Regex.PCRE ( (=~~), (=~) )
 
 user :: IO String
 user = getEnv "USER"
@@ -40,14 +38,13 @@ cpu = let
   in
     flip (=~~) pattern =<< readFile "/proc/cpuinfo"
 
-
 display :: String -> String -> String -> String -> String -> String -> String -> String
 display x y z v b n m = concat [x, "@", y
-                           ,"\nDistro: ", z
-                           ,"\nArchitechture: ", v
-                           ,"\nKernel: ", b
-                           , "\nUptime: ", n
-                           , "\nCPU: ", m]
+                           ,"\nDistro:          ", z
+                           ,"\nArchitechture:   ", v
+                           ,"\nKernel:          ", b
+                           ,"\nUptime:          ", n
+                           ,"\nCPU:             ", m]
 
 main :: IO ()
 main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` cpu

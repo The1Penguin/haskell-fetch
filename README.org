@@ -10,4 +10,4 @@
 - [ ] gpu
 
 ** Desired output form
-- [ ] Make the output align the start of values
+- [X] Make the output align the start of values

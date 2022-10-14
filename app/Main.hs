@@ -7,7 +7,7 @@ import System.Info ( arch )
 import System.Process ( readProcessWithExitCode )
 import Data.Tuple.Select ( Sel2(sel2) )
 import Text.Regex.PCRE ( (=~~), (=~) )
-import Text.Printf
+import Text.Printf ( printf )
 
 user :: IO String
 user = getEnv "USER"
@@ -40,7 +40,12 @@ cpu = let
     flip (=~~) pattern =<< readFile "/proc/cpuinfo"
 
 display :: String -> String -> String -> String -> String -> String -> String -> String
-display = printf "%s@%s\nDistro:\t%s\nArch:\t%s\nKernel:\t%s\nUptime:\t%s\nCPU:\t%s"
+display = printf "       __   %s@%s\n\
+                 \-=(o '.     Distro:\t%s\n\
+                 \   '.-.\\    Arch:\t%s\n\
+                 \   /|  \\\\   Kernel:\t%s\n\
+                 \   '|  ||   Uptime:\t%s\n\
+                 \    _\\_):,_ CPU:\t%s"
 
 main :: IO ()
 main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` cpu

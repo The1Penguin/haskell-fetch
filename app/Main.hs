@@ -35,7 +35,7 @@ uptime = let
 
 cpu :: IO String
 cpu = let
-  pattern = "(?<=(model\\sname\\t:\\s))[A-z\\s\\d]+(?=\\n)" :: String
+  pattern = "(?<=(model\\sname\\t:\\s))[A-z\\s\\d-]+(?=\\n)" :: String
   in
     flip (=~~) pattern =<< readFile "/proc/cpuinfo"
 

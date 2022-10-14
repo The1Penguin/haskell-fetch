@@ -40,12 +40,12 @@ cpu = let
     flip (=~~) pattern =<< readFile "/proc/cpuinfo"
 
 display :: String -> String -> String -> String -> String -> String -> String -> String
-display = printf "       __   %s@%s\n\
-                 \-=(o '.     Distro:\t%s\n\
-                 \   '.-.\\    Arch:\t%s\n\
-                 \   /|  \\\\   Kernel:\t%s\n\
-                 \   '|  ||   Uptime:\t%s\n\
-                 \    _\\_):,_ CPU:\t%s"
+display = printf "       __\t%s@%s\n\
+                 \-=(o '.\t\tDistro:\t%s\n\
+                 \   '.-.\\\tArch:\t%s\n\
+                 \   /|  \\\\\tKernel:\t%s\n\
+                 \   '|  ||\tUptime:\t%s\n\
+                 \    _\\_):,_\tCPU:\t%s"
 
 main :: IO ()
 main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` cpu

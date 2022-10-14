@@ -29,10 +29,10 @@ kernel :: IO String
 kernel = liftM (head . drop 2 . words . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
 
 display :: String -> String -> String -> String -> String -> String
-display x y z v b = x ++ "@" ++ y
-  ++ "\nDistro: " ++ z
-  ++ "\nArchitechture: " ++ v
-  ++ "\nKernel: " ++ b
+display x y z v b = concat [x, "@", y
+                           ,"\nDistro: ", z
+                           ,"\nArchitechture: ", v
+                           ,"\nKernel: ", b]
 
 main :: IO ()
 main = do

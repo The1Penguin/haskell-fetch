@@ -29,7 +29,10 @@ kernel :: IO String
 kernel = liftM (head . drop 2 . words . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
 
 uptime :: IO String
-uptime = liftM (drop 3 . sel2) $ readProcessWithExitCode "uptime" ["-p"] ""
+uptime = let
+  pattern = "(?<=up )[A-z\\s\\d,]+(?=\\n)" :: String
+  in
+    liftM (flip (=~) pattern . sel2) $ readProcessWithExitCode "uptime" ["-p"] ""
 
 cpu :: IO String
 cpu = let

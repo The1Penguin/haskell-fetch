@@ -1,6 +1,6 @@
 #+title: Haskell Fetch
 
-* Features wanted
+** Features wanted
 - [X] username@host
 - [X] os
 - [X] arch
@@ -8,3 +8,6 @@
 - [X] uptime
 - [X] cpu
 - [ ] gpu
+
+** Desired output form
+- [ ] Make the output align the start of values

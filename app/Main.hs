@@ -28,12 +28,19 @@ architechture = return arch
 kernel :: IO String
 kernel = liftM (head . drop 2 . words . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
 
-display :: String -> String -> String -> String -> String -> String
-display x y z v b = concat [x, "@", y
+cpu :: IO String
+cpu = let
+  pattern = "(?<=\\s)[A-z\\s\\d]+(?=\\nstepping)" :: String
+  in
+    flip (=~~) pattern =<< readFile "/proc/cpuinfo"
+
+display :: String -> String -> String -> String -> String -> String -> String
+display x y z v b n = concat [x, "@", y
                            ,"\nDistro: ", z
                            ,"\nArchitechture: ", v
-                           ,"\nKernel: ", b]
+                           ,"\nKernel: ", b
+                           , "\nCPU: ", n]
 
 main :: IO ()
 main = do
-  putStrLn =<< liftM5 display user hostname distro architechture kernel
+  putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` cpu

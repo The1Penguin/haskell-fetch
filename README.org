@@ -2,9 +2,9 @@
 
 * Features wanted
 - [X] username@host
-- [-] os
-- [ ] arch
-- [ ] kernel
+- [X] os
+- [X] arch
+- [-] kernel
 - [ ] uptime
 - [ ] cpu
 - [ ] gpu

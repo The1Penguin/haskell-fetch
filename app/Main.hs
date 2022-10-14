@@ -3,6 +3,7 @@ module Main where
 import System.Environment
 import Network.HostName
 import Control.Monad
+import System.Info
 import System.IO
 import Data.List
 import Text.Regex.PCRE
@@ -19,6 +20,18 @@ distro = let
     in
       flip (=~~) pattern =<< readFile "/etc/os-release"
 
+architechture :: IO String
+architechture = return arch
+
+kernel :: IO String
+kernel = undefined
+
+display :: String -> String -> String -> String -> String -> String
+display x y z v b = x ++ "@" ++ y
+  ++ "\nDistro: " ++ z
+  ++ "\nArchitechture: " ++ v
+  ++ "\nKernel" ++ b
+
 main :: IO ()
 main = do
-  putStrLn =<< liftM3 (\x y z -> x ++ "@" ++ y ++ "\n" ++ z) user hostname distro
+  putStrLn =<< liftM5 display user hostname distro architechture kernel

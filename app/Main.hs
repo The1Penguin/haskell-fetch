@@ -6,6 +6,7 @@ import Control.Monad ( liftM, ap )
 import System.Info ( arch )
 import System.Process ( readProcessWithExitCode )
 import Data.Tuple.Select ( Sel2(sel2) )
+import Data.List
 import Text.Regex.PCRE ( (=~~), (=~) )
 import Text.Printf ( printf )
 
@@ -35,17 +36,21 @@ uptime = let
 
 cpu :: IO String
 cpu = let
-  pattern = "(?<=(model\\sname\\t:\\s))[A-z\\s\\d-]+(?=\\n)" :: String
+  pattern = "(?<=(model\\sname\\t:\\s))[A-z\\s\\d-@()]+(?=\\n)" :: String
   in
     flip (=~~) pattern =<< readFile "/proc/cpuinfo"
 
-display :: String -> String -> String -> String -> String -> String -> String -> String
+shell :: IO String
+shell = liftM (drop 1 . head . reverse . groupBy (\_ b -> b /= '/')) $ getEnv "SHELL"
+
+display :: String -> String -> String -> String -> String -> String -> String -> String -> String
 display = printf "       __\t%s@%s\n\
                  \-=(o '.\t\tDistro:\t%s\n\
                  \   '.-.\\\tArch:\t%s\n\
                  \   /|  \\\\\tKernel:\t%s\n\
                  \   '|  ||\tUptime:\t%s\n\
-                 \    _\\_):,_\tCPU:\t%s"
+                 \    _\\_):,_\tShell:\t%s\n\
+                 \\t\t\tCPU:\t%s"
 
 main :: IO ()
-main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` cpu
+main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` shell `ap` cpu

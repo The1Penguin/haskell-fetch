@@ -50,7 +50,7 @@ display = printf "       __\t%s@%s\n\
                  \   /|  \\\\\tKernel:\t%s\n\
                  \   '|  ||\tUptime:\t%s\n\
                  \    _\\_):,_\tShell:\t%s\n\
-                 \\t\t\tCPU:\t%s"
+                 \\t\tCPU:\t%s"
 
 main :: IO ()
 main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` shell `ap` cpu

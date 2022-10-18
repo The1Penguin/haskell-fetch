@@ -2,7 +2,7 @@ module Main where
 
 import System.Environment ( getEnv )
 import Network.HostName ( getHostName )
-import Control.Monad ( liftM, ap )
+import Control.Monad ( liftM )
 import System.Info ( arch )
 import System.Process ( readProcessWithExitCode )
 import Data.Tuple.Select ( Sel2(sel2) )
@@ -53,4 +53,4 @@ display = printf "       __\t%s@%s\n\
                  \\t\tCPU:\t%s"
 
 main :: IO ()
-main = putStrLn =<< return display `ap` user `ap` hostname `ap` distro `ap` architechture `ap` kernel `ap` uptime `ap` shell `ap` cpu
+main = putStrLn =<< return display <*> user <*> hostname <*> distro <*> architechture <*> kernel <*> uptime <*> shell <*> cpu

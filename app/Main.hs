@@ -6,7 +6,7 @@ import Control.Monad ( liftM )
 import System.Info ( arch )
 import System.Process ( readProcessWithExitCode )
 import Data.Tuple.Select ( Sel2(sel2) )
-import Data.List
+import Data.List ( groupBy )
 import Text.Regex.PCRE ( (=~~), (=~) )
 import Text.Printf ( printf )
 

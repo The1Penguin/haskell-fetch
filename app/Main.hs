@@ -12,6 +12,9 @@ import Data.Char
 import Text.Printf ( printf )
 import Text.ParserCombinators.ReadP
 
+parse :: ReadP String -> String -> String
+parse rules = fst . last . readP_to_S rules
+
 user :: IO String
 user = getEnv "USER"
 
@@ -19,7 +22,7 @@ hostname :: IO String
 hostname = getHostName
 
 distro :: IO String
-distro = liftM (fst . last . readP_to_S distroParse) $ readFile "/etc/os-release"
+distro = liftM (parse distroParse) $ readFile "/etc/os-release"
 
 distroParse :: ReadP String
 distroParse =
@@ -31,7 +34,7 @@ architechture = return arch
 
 -- To be cleaned
 kernel :: IO String
-kernel = liftM (fst . last . readP_to_S kernelParse . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
+kernel = liftM (parse kernelParse . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
 kernelParse :: ReadP String
 kernelParse = many1 (satisfy (not . isSpace)) >>
   get >>
@@ -40,13 +43,13 @@ kernelParse = many1 (satisfy (not . isSpace)) >>
   many1 (satisfy (not . isSpace))
 
 uptime :: IO String
-uptime = liftM (fst . last . readP_to_S uptimeParse . sel2) $ readProcessWithExitCode "uptime" ["-p"] ""
+uptime = liftM (parse uptimeParse . sel2) $ readProcessWithExitCode "uptime" ["-p"] ""
 
 uptimeParse :: ReadP String
 uptimeParse = string "up " >> many1 (satisfy (/= '\n'))
 
 cpu :: IO String
-cpu = liftM (fst . last . readP_to_S cpuParse) $ readFile "/proc/cpuinfo"
+cpu = liftM (parse cpuParse) $ readFile "/proc/cpuinfo"
 
 cpuParse :: ReadP String
 cpuParse =
@@ -54,8 +57,7 @@ cpuParse =
   many1 (satisfy (/= '\n'))
 
 shell :: IO String
-shell = liftM (drop 1 . head . reverse . groupBy (\_ b -> b /= '/')) $ getEnv "SHELL"
-
+shell = liftM (drop 1 . last . groupBy (\_ b -> b /= '/')) $ getEnv "SHELL"
 
 display :: String -> String -> String -> String -> String -> String -> String -> String -> String
 display = printf "       __\t%s@%s\n\

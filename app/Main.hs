@@ -7,6 +7,7 @@ import System.Info ( arch )
 import System.Process ( readProcessWithExitCode )
 import Data.Tuple.Select ( Sel2(sel2) )
 import Data.List ( groupBy )
+import Data.Char
 import Text.Regex.PCRE ( (=~~), (=~) )
 import Text.Printf ( printf )
 import Text.ParserCombinators.ReadP
@@ -28,7 +29,9 @@ architechture = return arch
 
 -- To be cleaned
 kernel :: IO String
-kernel = liftM (head . drop 2 . words . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
+kernel = liftM (fst . last . readP_to_S kernelParse . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
+kernelParse :: ReadP String
+kernelParse = many1 (satisfy (not . isSpace)) >> get >> many1 (satisfy (not . isSpace)) >> get >> many1 (satisfy (not . isSpace))
 
 uptime :: IO String
 uptime = liftM (fst . last . readP_to_S uptimeParse . sel2) $ readProcessWithExitCode "uptime" ["-p"] ""

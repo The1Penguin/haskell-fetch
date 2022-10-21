@@ -22,7 +22,9 @@ distro :: IO String
 distro = liftM (fst . last . readP_to_S distroParse) $ readFile "/etc/os-release"
 
 distroParse :: ReadP String
-distroParse = (string "NAME=\"") >> many1 (satisfy (/= '\"'))
+distroParse = do
+  _ <- mplus (string "NAME=\"") (many1 (satisfy (/= '\n')) >> get >> string "NAME=\"")
+  many1 (satisfy (/= '\"'))
 
 architechture :: IO String
 architechture = return arch

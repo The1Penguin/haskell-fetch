@@ -1,16 +1,16 @@
 module Main where
 
-import System.Environment ( getEnv )
-import Network.HostName ( getHostName )
 import Control.Monad ( liftM )
+import Data.Char ( isSpace )
+import Data.List ( groupBy )
+import Data.Tuple.Select ( Sel2(sel2) )
+import Network.HostName ( getHostName )
+import System.Environment ( getEnv )
 import System.Info ( arch )
 import System.Process ( readProcessWithExitCode )
-import Data.Tuple.Select ( Sel2(sel2) )
-import Data.List ( groupBy )
-import Data.Char
--- import Text.Regex.PCRE ( (=~~), (=~) )
-import Text.Printf ( printf )
 import Text.ParserCombinators.ReadP
+    ( get, many1, manyTill, readP_to_S, satisfy, string, ReadP )
+import Text.Printf ( printf )
 
 parse :: ReadP String -> String -> String
 parse rules = fst . last . readP_to_S rules
@@ -32,7 +32,6 @@ distroParse =
 architechture :: IO String
 architechture = return arch
 
--- To be cleaned
 kernel :: IO String
 kernel = liftM (parse kernelParse . sel2) $ readProcessWithExitCode "uname" ["-a"] ""
 kernelParse :: ReadP String

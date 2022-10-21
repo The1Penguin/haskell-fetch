@@ -2,7 +2,7 @@ module Main where
 
 import System.Environment ( getEnv )
 import Network.HostName ( getHostName )
-import Control.Monad ( liftM )
+import Control.Monad ( liftM, mplus )
 import System.Info ( arch )
 import System.Process ( readProcessWithExitCode )
 import Data.Tuple.Select ( Sel2(sel2) )
